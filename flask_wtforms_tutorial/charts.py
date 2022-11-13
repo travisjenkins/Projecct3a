@@ -42,7 +42,7 @@ class StockData:
             self.__requested_function = "INTRADAY" # Returns only the last 100 data points unless we add another url parameter
             self.__key_name = f"Time Series ({self.__interval})"
         elif requested_function == 2:
-            self.__requested_function = "DAILY" # Returns only the last 100 data points unless we add another url parameter
+            self.__requested_function = "DAILY_ADJUSTED" # Returns only the last 100 data points unless we add another url parameter
             self.__key_name = "Time Series (Daily)"
         elif requested_function == 3:
             self.__requested_function = "WEEKLY"
@@ -158,7 +158,7 @@ class StockChart:
                 if "open" in datapoint_key:
                     datapoint_number = float(datapoint_value)
                     self.open_list.append(datapoint_number)
-                if "close" in datapoint_key:
+                if "adjusted" in datapoint_key:
                     datapoint_number = float(datapoint_value)
                     self.close_list.append(datapoint_number)
                 if "high" in datapoint_key:
